@@ -7,8 +7,6 @@ class Signup extends Component {
   render() {
     return (
       <Container>
-        <Title>Oauth Signup</Title>
-
         <div className="row">
           <div className="col s12 m8 offset-m2">
             <div className="card blue-grey darken-1 ">
