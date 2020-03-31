@@ -4,7 +4,7 @@ const User = mongoose.model("user"); // bring in mongo class
 module.exports = async (req, res, next) => {
   const { email, password, firstName, lastName } = req.body;
 
-  console.log("createLocalUser", email, password, firstName, lastName);
+  console.log("createLocalUser", email, firstName, lastName);
   // if a user is found then continue on you are authorized to continue...
   try {
     const user = await new User({

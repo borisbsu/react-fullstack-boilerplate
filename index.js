@@ -11,7 +11,7 @@ require("./services/passport"); // make sure passport is ran...
 
 const handleErrors = require("./middlewares/errors");
 
-mongoose.connect(keys.MONGO_URI);
+mongoose.connect(keys.MONGODB_URI);
 
 const app = express();
 
