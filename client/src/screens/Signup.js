@@ -8,24 +8,6 @@ class Signup extends Component {
     return (
       <Container>
         <Title>Oauth Signup</Title>
-        <ButtonContainer>
-          <Button
-            facebook
-            href="/auth/facebook"
-            className="waves-effect btn deep-purple darken-3"
-          >
-            Facebook
-          </Button>
-          <Button
-            google
-            href="/auth/google"
-            className="waves-effect btn blue darken-2"
-          >
-            Google
-          </Button>
-        </ButtonContainer>
-
-        <hr style={{ marginTop: "20px", marginBottom: "20px" }} />
 
         <div className="row">
           <div className="col s12 m8 offset-m2">
@@ -49,16 +31,6 @@ const Container = styled.div`
 
 const Title = styled.h1`
   color: ${props => props.theme.dark};
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-`;
-
-const Button = styled.a`
-  margin-left: ${props => (props.google ? "15px" : 0)};
 `;
 
 export default Signup;

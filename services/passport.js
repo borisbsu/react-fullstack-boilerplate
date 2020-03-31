@@ -1,9 +1,6 @@
 // OAuth
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
-const FacebookStrategy = require("passport-facebook").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
-const keys = require("../config/keys");
 const mongoose = require("mongoose");
 
 const User = mongoose.model("user"); // bring in mongo class
@@ -20,47 +17,6 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
-
-// Google
-// https://developers.google.com/identity/one-tap/web/get-started -- new google login??
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: "/auth/google/callback", // passport as correct domain
-      proxy: true // tell passport to trust proxy and keep https for callback
-    },
-    (accessToken, refreshToken, profile, done) => {
-      const data = {
-        _oAuthId: profile.id,
-        firstName: profile.name.givenName,
-        lastName: profile.name.familyName
-      };
-      newOrExistingUser(data, done);
-    }
-  )
-);
-
-// Facebook
-passport.use(
-  new FacebookStrategy(
-    {
-      clientID: keys.FACEBOOK_APP_ID,
-      clientSecret: keys.FACEBOOK_APP_SECRET,
-      callbackURL: "/auth/facebook/callback",
-      proxy: true
-    },
-    (accessToken, refreshToken, profile, done) => {
-      const data = {
-        _oAuthId: profile.id
-        // firstName: profile.name.givenName,
-        // lastName: profile.name.familyName
-      };
-      newOrExistingUser(data, done);
-    }
-  )
-);
 
 // Email password
 const localOptions = {
